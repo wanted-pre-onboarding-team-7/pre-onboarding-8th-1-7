@@ -1,20 +1,15 @@
-import React from 'react'
-import styled from 'styled-components'
-import Page from './Page'
+import React from 'react';
+import styled from 'styled-components';
+import Page from './Page';
 
-interface Props {
-  children?: React.ReactNode
-  [k: string]: any
-}
-
-export default function Layout({ children, ...props }: Props) {
+export default function Layout({ children, ...props }) {
   return (
     <Page>
       <Container {...props}>
         <div>{children}</div>
       </Container>
     </Page>
-  )
+  );
 }
 
 const Container = styled.main`
@@ -28,4 +23,4 @@ const Container = styled.main`
   top: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 1px 1px 1px 1px #999;
-`
+`;
