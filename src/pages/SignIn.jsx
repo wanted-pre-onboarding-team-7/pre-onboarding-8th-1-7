@@ -1,10 +1,10 @@
 import { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import AuthInput from '../components/auth/AuthInput';
-import getValidation from '../../lib/utils/getValidation';
-import { signInAPI } from '../../lib/api/auth/signIn';
 import React from 'react';
+import AuthInput from '../ui/components/auth/AuthInput';
+import getValidation from '../lib/utils/getValidation';
+import { signInAPI } from '../lib/api/auth/signIn';
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ const SignIn = () => {
     }
   }, [navigate, user]);
 
-  const onClickSignUp = useCallback(() => navigate('./signup'), []);
+  const onClickSignUp = useCallback(() => navigate('./signup'), [navigate]);
 
   const isValidation = useMemo(
     () => !(validation.email && validation.password),

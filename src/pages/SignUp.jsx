@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { memo, useCallback, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AuthInput from '../components/auth/AuthInput';
-import getValidation from '../../lib/utils/getValidation';
-import { signUpAPI } from '../../lib/api/auth/signUp';
+import { signUpAPI } from '../lib/api/auth/signUp';
+import getValidation from '../lib/utils/getValidation';
+import AuthInput from '../ui/components/auth/AuthInput';
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const SignIn = () => {
 
   const onClickBackSpace = useCallback(() => {
     navigate('/');
-  }, []);
+  }, [navigate]);
 
   const onChangeInputValue = useCallback(
     (e) => {
