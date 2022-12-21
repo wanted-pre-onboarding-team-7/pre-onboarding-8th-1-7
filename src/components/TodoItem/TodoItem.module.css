@@ -1,0 +1,40 @@
+.complete {
+  text-decoration: line-through;
+}
+
+.input {
+  height: 40px;
+  font-size: 15px;
+  border: 2px solid #ccc;
+  outline: none;
+  border-radius: 5px;
+}
+
+.input:focus {
+  border: 2px solid rgba(79, 216, 79, 0.8);
+}
+
+.item-container {
+  display: flex;
+  height: 60px;
+  width: 100%;
+}
+
+.todo-text {
+  flex: 5;
+  cursor: pointer;
+}
+
+.todo-container {
+  display: flex;
+  align-items: center;
+  flex: 4;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  width: 120px;
+  flex: 2;
+}
