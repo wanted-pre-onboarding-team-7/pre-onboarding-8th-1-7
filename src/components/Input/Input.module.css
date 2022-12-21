@@ -1,0 +1,21 @@
+.container {
+  outline: none;
+  border: none;
+}
+
+.label {
+  display: none;
+}
+
+.input {
+  height: 40px;
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+  outline: none;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.input:focus {
+  border-bottom: 4px solid rgba(79, 216, 79, 0.4);
+}
