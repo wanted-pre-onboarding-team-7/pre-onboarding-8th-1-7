@@ -1,17 +1,16 @@
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { theme } from '../theme';
-import { SIGN_IN, SUBMIT_BTN,RES_MSG } from '../utils/constants';
+import { SIGN_IN, SUBMIT_BTN, RES_MSG } from '../utils/constants';
 import TextInput from './TextInput';
 
-export default function SignForm({ signState,setSignState }) {
-
+export default function SignForm({ signState, setSignState }) {
   const [form, setForm] = useState(initialForm);
 
   useEffect(() => {
     setForm(initialForm);
   }, [signState]);
-  
+
   const handleChange = (e) => {
     setForm((prev) => {
       const newForm = { ...prev, [e.target.id]: e.target.value };
@@ -22,7 +21,7 @@ export default function SignForm({ signState,setSignState }) {
   //API 구현이 안되어 있어 임시적인 회원가입/로그인 핸들러
   const handleSubmit = (e) => {
     e.preventDefault();
-    window.alert(RES_MSG.SUCCESS(signState))
+    window.alert(RES_MSG.SUCCESS(signState));
     setSignState(SIGN_IN);
   };
 
@@ -57,9 +56,9 @@ const SubmitBtn = styled.input`
   padding: 12px;
   border-radius: 10px;
   color: white;
-  cursor:pointer;
+  cursor: pointer;
 `;
 const initialForm = {
-    email: '',
-    password: '',
-  };
+  email: '',
+  password: '',
+};

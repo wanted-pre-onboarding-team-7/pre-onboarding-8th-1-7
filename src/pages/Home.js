@@ -13,7 +13,7 @@ function Home() {
     <Wrapper bgColor={theme.bgColorlight}>
       <Title>{HOME_TITLE[signState]}</Title>
       <FormWrapper>
-        <SignForm signState={signState} setSignState={setSignState}/>
+        <SignForm signState={signState} setSignState={setSignState} />
         <SignToggleBtn signState={signState} setSignState={setSignState} />
       </FormWrapper>
     </Wrapper>
