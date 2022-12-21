@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { validation, validationSignUp } from '../../utils/validation';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import { Signin, Signup } from '../../api/api';
+import { setToken } from '../../utils/authToken';
 
 // 초기값
 const INIT_VAL = {
@@ -10,7 +13,7 @@ const INIT_VAL = {
 };
 function AuthForm({ existUser, isUser }) {
   const [values, setValues] = useState(INIT_VAL);
-
+  const navigate = useNavigate();
   const changeHandler = (evt) => {
     const { name, value } = evt.target;
     setValues({ ...values, [name]: value });
@@ -18,6 +21,18 @@ function AuthForm({ existUser, isUser }) {
 
   const sumbitHandler = async (evt) => {
     evt.preventDefault();
+    const postVal = { email: values.email, password: values.password };
+    if (existUser) {
+      // 기존회원 로그인
+      const resp = await Signin(postVal);
+      setToken(resp.data.access_token);
+      navigate('/todo');
+    } else {
+      //회원가입일때
+      await Signup(postVal);
+      isUser();
+      window.location.href = '/';
+    }
   };
   /**
    * 로그인-회원가입 활성화 버튼 함수
