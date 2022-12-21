@@ -1,11 +1,12 @@
 // Home
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { HOME_TITLE, SIGN_IN, SIGN_UP, TOGGLE_TEXT } from '../utils/auth-fn';
 import { theme } from '../theme';
 import SignForm from '../components/SignForm';
 import { useNavigate } from 'react-router-dom';
 import { checkLocalStorage, saveUserToken } from '../utils/local-storage-fn';
+import SignToggleBtn from '../components/SignToggleBtn';
+import { HOME_TITLE, SIGN_UP } from '../utils/constants';
 
 export default function Home() {
   const [signState, setSignState] = useState(SIGN_UP);
@@ -15,12 +16,6 @@ export default function Home() {
   useEffect(() => {
     redirectTodo(checkLocalStorage());
   }, []);
-
-  const handleToggleClick = () => {
-    setSignState((prevState) => {
-      return prevState === SIGN_UP ? SIGN_IN : SIGN_UP;
-    });
-  };
 
   const redirectTodo = (condition) => {
     if (condition) {
@@ -40,9 +35,7 @@ export default function Home() {
     <Wrapper bgColor={theme.bgColorlight}>
       <Title>{HOME_TITLE[signState]}</Title>
       <FormWrapper>
-        <ToggleBtn bgColor={theme.btnColor} onClick={handleToggleClick}>
-          <ToggleText>{TOGGLE_TEXT[signState]}</ToggleText>
-        </ToggleBtn>
+        <SignToggleBtn signState={signState} setSignState={setSignState} />
         <SignForm
           signState={signState}
           handlePostResponse={handlePostResponse}
@@ -78,20 +71,6 @@ const Title = styled.h1`
   font-size: 32px;
   font-weight: 600;
   margin-bottom: 10px;
-`;
-
-const ToggleBtn = styled.div`
-  background-color: ${(props) => props.bgColor};
-  padding: 10px;
-  border-radius: 10px;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  cursor: pointer;
-`;
-const ToggleText = styled.span`
-  font-size: 14px;
-  color: white;
 `;
 
 const Message = styled.span`

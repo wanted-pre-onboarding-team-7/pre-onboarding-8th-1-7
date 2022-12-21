@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../theme';
-import { postAuth, SUBMIT_BTN } from '../utils/auth-fn';
+import { postAuth } from '../utils/auth-fn';
+import { SUBMIT_BTN } from '../utils/constants';
+import TextInput from './TextInput';
 
 export default function SignForm({ signState, handlePostResponse }) {
   const [form, setForm] = useState(initialForm);
@@ -21,31 +23,15 @@ export default function SignForm({ signState, handlePostResponse }) {
     e.preventDefault();
     postAuth(form, signState, handlePostResponse);
   };
+
   return (
     <Form onSubmit={handleSubmit}>
-      <InputWrapper>
-        <InputLabel for="email">이메일 주소</InputLabel>
-        <Input
-          type="email"
-          id="email"
-          required
-          placeholder="이메일 주소를 입력하세요."
-          value={form.email}
-          onChange={handleChange}
-        />
-      </InputWrapper>
-      <InputWrapper>
-        <InputLabel for="password">비밀번호</InputLabel>
-        <Input
-          type="password"
-          id="password"
-          placeholder="비밀번호를 입력하세요."
-          minLength={8}
-          value={form.password}
-          required
-          onChange={handleChange}
-        />
-      </InputWrapper>
+      <TextInput type="email" value={form.email} onChange={handleChange} />
+      <TextInput
+        type="password"
+        value={form.password}
+        onChange={handleChange}
+      />
       <SubmitBtn
         type="submit"
         bgColor={theme.btnColor}
@@ -61,25 +47,7 @@ const Form = styled.form`
   width: 70%;
   gap: 30px;
 `;
-const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-const InputLabel = styled.span`
-  font-size: 14px;
-`;
-const Input = styled.input`
-  font-size: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  padding: 12px;
-  :valid {
-    background-color: white;
-  }
-  :invalid {
-    background-color: #eff5f5;
-  }
-`;
+
 const SubmitBtn = styled.input`
   border: none;
   font-size: 16px;
