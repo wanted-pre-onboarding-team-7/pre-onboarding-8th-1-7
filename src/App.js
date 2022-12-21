@@ -1,5 +1,24 @@
+import {Route,Routes} from 'react-router-dom'
+import styled from "styled-components"
 function App() {
-  return <div className="App"></div>;
+
+  return (
+    <Main>
+     
+    <Routes>
+        <Route exact path="/"  element={<LoginPage/>} />
+    </Routes>     
+   
+   </Main>
+  );
 }
+
+const Main = styled.div`
+  display:flex;
+  min-height:100vh;
+  justify-content:center;
+  align-items:center;
+
+`
 
 export default App;
