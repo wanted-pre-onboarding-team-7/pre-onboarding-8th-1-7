@@ -50,10 +50,24 @@ Test: 테스트 코드 수정에 대한 커밋
 
 ### 2: 로그인 API 호출 및 응답 관리
 
-- axios 관련 함수 (담당자: 유서경)
+- 2.1 axios 관련 함수 (담당자: 유서경)
 
   - 참고 코드: 이수창
   - 선택 이유: Axios middleware 등을 사용한 라이브러리 활용
+  - 코드 활용
+
+    - 2.1.1. `.create()` 메서드를 사용해 사용자 정의 구성을 사용하는 axios 인스턴스를 생성
+
+      ```js
+      export const setting = axios.create({
+        baseURL,
+        headers,
+      });
+      ```
+
+    - 2.1.2 요청 인터셉터를 추가하여 `then`, `catch`로 처리되기 전에 작업 수행
+      - 이후 `axios.interceptors.request.eject`로 필요 시 인터셉터 제거 가능
+    - 2.1.3 `validateStatus` config 옵션을 사용하면, 오류를 발생시키는 HTTP 코드를 정의 가능
 
 - response handle (담당자: 김형욱, 경지윤)
 
