@@ -27,55 +27,70 @@
 - 로그인 <=> 회원가입 이동 ✅
 
 ### Assignment1 이메일/비밀번호 유효성 검사
+
 #### 구현 기능
+
 - 이메일 조건: @ 포함 ✅
 - 비밀번호 조건: 8자 이상 ✅
 - 조건 만족 시에만 버튼 활성화 ✅
+
 #### 구현 코드
+
 **SignForm: 로그인/회원가입 데이터 로직을 관리하는 컴포넌트**
+
 - sumbit event 및 form data 관리
 - `TextInput` 컴포넌트를 분리하여 `SignForm` 내에서 재사용함
 
 ![image](https://user-images.githubusercontent.com/79842380/208824042-7ce93fc7-f850-4a1d-81a5-76d009a4b98e.png)
 
 **TextInput: input UI 및 유효성 검증하는 컴포넌트**
+
 - 유효성 조건을 `input tag`의 `attribute`로 전달: `type`, `minLength`,`required`
 
 ![image](https://user-images.githubusercontent.com/79842380/208824530-c6577d09-a0f6-459f-a819-80a1c03c1b07.png)
 
 #### 구현 데모
+
 ![Dec-21-2022 13-46-58](https://user-images.githubusercontent.com/79842380/208823773-663173c2-8e6a-4c23-929f-ff6b9b347836.gif)
 
-
 ### Assignment2 로그인 구현
+
 #### 구현 기능
+
 - 로그인 API 호출: 올바른 응답 시 `/todo`로 이동 ✅
 - 로그인 성공 시 Response Body의 JWT를 로컬 스토리지에 저장 ✅
+
 #### 구현 코드
+
 **postAuth: 로그인/회원가입 API에 요청을 처리하는 함수**
+
 - `signState`: 사용자의 회원가입/로그인 여부에 대한 상태
 
 ![image](https://user-images.githubusercontent.com/79842380/208825382-3ae87015-1213-46ec-bff5-9f7b562ae3ae.png)
 
 **handlePostResponse: 로그인/회원가입 API의 응답을 처리하는 함수**
+
 - `setMsg`: 응답 결과를 사용자에게 출력
 - `saveUserToken`: 토큰을 로컬 스토리지에 저장
 
 ![image](https://user-images.githubusercontent.com/79842380/208825793-e4270b93-e9c7-4834-b48c-fbe654ead798.png)
 
 #### 구현 데모
+
 ![Dec-21-2022 14-13-53](https://user-images.githubusercontent.com/79842380/208826846-22f77278-ddd9-40cf-b413-58d44c7cfb1b.gif)
 
 ### Assignment3 로그인 여부 > 리다이렉트 처리
+
 #### 구현 기능
+
 - 로컬 스토리지에 토큰이 있는 상태로 `/` 접속 => `/todo` 로 리다이렉트 ✅
 - 로컬 스토리지에 토큰이 없는 상태로 `/todo`접속 => `/` 로 리다이렉트 ✅
 
 #### 구현 코드
+
 **`/` `/todo`의 스크린 컴포넌트 최초 마운트 시 토큰 저장 여부를 판단하여 리다이렉트**
 
 ![image](https://user-images.githubusercontent.com/79842380/208827430-5c9bf77b-a126-4354-ab12-c7b848341943.png)
-
 
 **isLocalStorageHasToken: 로컬 스토리지에 토큰이 있는지 확인하는 함수**
 
@@ -88,7 +103,6 @@
 
 ![todo_redirection](https://user-images.githubusercontent.com/79842380/206915107-0966aeeb-68b2-47b1-9320-da401960948e.gif)
 [로컬 스토리지에 토큰이 있는 상태로 `/` 페이지에 접속한다면 `/todo` 경로로 리다이렉트]
-
 
 # Team 7 컨벤션
 
