@@ -1,5 +1,5 @@
-import React, { forwardRef } from "react";
-import styles from "./Input.module.css";
+import React, { forwardRef } from 'react';
+import styles from './Input.module.css';
 
 const Input = forwardRef(
   ({ type, content, onChange, placeholder, children }, ref) => {
@@ -21,7 +21,7 @@ const Input = forwardRef(
         />
       </fieldset>
     );
-  }
+  },
 );
 
 export default Input;

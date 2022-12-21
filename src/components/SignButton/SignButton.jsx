@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./SignButton.module.css";
+import React from 'react';
+import styles from './SignButton.module.css';
 
 const UserButton = ({ disabled, onSubmit, onMove, texts }) => {
   return (
