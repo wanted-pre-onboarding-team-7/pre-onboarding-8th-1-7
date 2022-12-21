@@ -4,8 +4,8 @@ import { isLocalStorageHasToken } from '../utils/local-storage-fn';
 import styled from 'styled-components';
 import { theme } from '../theme';
 import { getTodos } from '../utils/todo-fn.js';
-import TodoForm from '../components/todo/TodoForm';
-import TodoList from '../components/todo/TodoList';
+import TodoForm from '../components/todoScreen/TodoForm';
+import TodoList from '../components/todoScreen/TodoList';
 
 export default function TodoScreen() {
   const navigate = useNavigate();

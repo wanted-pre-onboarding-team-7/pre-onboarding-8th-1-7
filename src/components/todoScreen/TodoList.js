@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Todo from './Todo';
+import Todo from './todo/Todo';
 
 export default function TodoList({ todos, loadTodos }) {
   return (

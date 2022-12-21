@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useState } from 'react';
-import { updateTodo, deleteTodo } from '../../utils/todo-fn';
+import { updateTodo, deleteTodo } from '../../../utils/todo-fn';
 import TodoReviseOff from './TodoReviseOff';
 import TodoReviseOn from './TodoReviseOn';
 

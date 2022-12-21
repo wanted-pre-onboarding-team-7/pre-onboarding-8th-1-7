@@ -1,4 +1,4 @@
-import { CHECKBOX_COLOR } from '../../utils/constants';
+import { CHECKBOX_COLOR } from '../../../utils/constants';
 import TodoBtns from './TodoBtns';
 import TodoContents from './TodoContents';
 import { faX, faCheck } from '@fortawesome/free-solid-svg-icons';
