@@ -1,5 +1,12 @@
+import { BrowserRouter } from 'react-router-dom';
+import Router from './routes/Router';
+
 function App() {
-  return <div className="App"></div>;
+  return (
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <Router />
+    </BrowserRouter>
+  );
 }
 
 export default App;
