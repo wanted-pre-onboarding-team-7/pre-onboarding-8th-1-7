@@ -1,5 +1,5 @@
 export const USER_KEY = 'user';
-export const checkLocalStorage = () => {
+export const isLocalStorageHasToken = () => {
   if (getUserToken()) {
     return true;
   }

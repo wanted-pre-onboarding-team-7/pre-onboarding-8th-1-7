@@ -4,7 +4,10 @@ import styled from 'styled-components';
 import { theme } from '../theme';
 import SignForm from '../components/SignForm';
 import { useNavigate } from 'react-router-dom';
-import { checkLocalStorage, saveUserToken } from '../utils/local-storage-fn';
+import {
+  isLocalStorageHasToken,
+  saveUserToken,
+} from '../utils/local-storage-fn';
 import SignToggleBtn from '../components/SignToggleBtn';
 import { HOME_TITLE, SIGN_UP } from '../utils/constants';
 
@@ -14,7 +17,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    redirectTodo(checkLocalStorage());
+    redirectTodo(isLocalStorageHasToken());
   }, []);
 
   const redirectTodo = (condition) => {
