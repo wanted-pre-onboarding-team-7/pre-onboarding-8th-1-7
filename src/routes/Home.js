@@ -1,16 +1,20 @@
 // Home
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { HOME_TITLE, SIGN_IN, SIGN_UP, TOGGLE_TEXT } from '../utils/auth-fn';
 import { theme } from '../theme';
 import SignForm from '../components/SignForm';
 import { useNavigate } from 'react-router-dom';
-import { USER_KEY } from '../utils/local-storage-fn';
+import { checkLocalStorage, USER_KEY } from '../utils/local-storage-fn';
 
 export default function Home() {
   const [signState, setSignState] = useState(SIGN_UP);
   const [msg, setMsg] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    navigateTodo(checkLocalStorage());
+  }, []);
 
   const handleToggleClick = () => {
     setSignState((prevState) => {
