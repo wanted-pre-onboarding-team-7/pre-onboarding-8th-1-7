@@ -16,14 +16,14 @@ export default function TodoScreen() {
     loadTodos();
   }, []);
 
-  const loadTodos = () => {
-    getTodos(handleGetTodos);
-  };
-
   const navigateHome = (condition) => {
     if (condition) {
       navigate('/');
     }
+  };
+
+  const loadTodos = () => {
+    getTodos(handleGetTodos);
   };
 
   const handleGetTodos = (todos) => {
