@@ -1,20 +1,20 @@
-import {useState} from 'react';
-import styled from 'styled-components'
-import { theme } from '../theme';
+import { useState } from 'react';
+import styled from 'styled-components';
 
+import { theme } from '../theme';
 import SignToggleBtn from '../components/SignToggleBtn';
 import SignForm from '../components/SignForm';
+import { HOME_TITLE, SIGN_UP } from '../utils/constants';
+
 function Home() {
-  const [signState, setSignState] = useState();
- 
+  const [signState, setSignState] = useState(SIGN_UP);
+
   return (
     <Wrapper bgColor={theme.bgColorlight}>
-      <Title>{}</Title>
+      <Title>{HOME_TITLE[signState]}</Title>
       <FormWrapper>
+        <SignForm signState={signState} setSignState={setSignState}/>
         <SignToggleBtn signState={signState} setSignState={setSignState} />
-        <SignForm
-          signState={signState}
-        />
       </FormWrapper>
     </Wrapper>
   );
