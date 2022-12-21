@@ -1,7 +1,9 @@
-import React from 'react';
+import { Navigate } from 'react-router-dom';
 
 function Todo() {
-  return <div>Todo</div>;
+  const token = localStorage.getItem('token');
+
+  return <>{!token && <Navigate to="/" replace={true} />}</>;
 }
 
 export default Todo;
