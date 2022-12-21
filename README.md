@@ -124,7 +124,9 @@
   - 추가 버튼을 클릭하면 새로운 투두 리스트 추가 ✅
 
 #### 구현 코드
+
 **TodoScreen: `/todo` 경로의 컴포넌트**
+
 - `todos`에 API로부터 받아온 todos를 저장함
 - `todos` 배열이 비어있는 경우 대안 메시지 출력
 
@@ -135,15 +137,16 @@
 ![image](https://user-images.githubusercontent.com/79842380/208939439-bde6caa3-6aba-45cf-a3f6-75eae3dd1df7.png)
 
 **TodoList: `todos`를 출력하는 컴포넌트**
+
 - 최신 todo부터 출력하기 위해 `[...todos].reverse()` 로 새로운 배열 생성
 
 ![image](https://user-images.githubusercontent.com/79842380/208940018-27808e46-de4f-4418-a4ed-971b192dd4a9.png)
 
 **TodoForm: 새로운 todo를 생성하는 컴포넌트**
+
 - 최신 todo부터 출력하기 위해 `[...todos].reverse()` 로 새로운 배열 생성
 
 ![image](https://user-images.githubusercontent.com/79842380/208940611-f70f2ef2-b128-40a8-9833-ae635f6e4e56.png)
-
 
 ### Assignment5 투두 리스트 UPDATE & DELETE
 
@@ -156,17 +159,17 @@
 #### 구현 코드
 
 **Todo: 단일 todo 컴포넌트**
+
 - 불리언 `revise` state를 기준으로 `TodoReviseOff`나 `TodoReviseOn`을 출력
 - `complete` state를 사용하여 체크박스 상태 관리
 
 ![image](https://user-images.githubusercontent.com/79842380/208940823-7f86bab2-6dd4-425c-8173-e8ee551ed766.png)
 
 **TodoReviseOn: 단일 todo 컴포넌트의 `revise = true`일 때 출력되는 컴포넌트**
-- 버튼 클릭시 콜백 함수를 props
+
+- 버튼 클릭시 콜백 함수를 props으로 전달
 
 ![image](https://user-images.githubusercontent.com/79842380/208941304-753bed5b-c6be-4928-a48c-9052cb2192e0.png)
-
-
 
 #### Assignment4-5: 투두 리스트 CRUD 데모
 
