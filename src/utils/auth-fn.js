@@ -31,22 +31,21 @@ const SIGN_URL = {
   SIGN_UP: `${API_URL}/auth/signup`,
   SIGN_IN: `${API_URL}/auth/signin`,
 };
-export const postAuth = async (data, signState, handleResponse) => {
+
+export const postAuth = async (data, signState, handlePostResponse) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
     },
   };
+
   axios
     .post(SIGN_URL[signState], data, config)
     .then((response) => {
-      handleResponse(
-        RES_MSG.SUCCESS(signState),
-        response.status,
-        response.data.access_token,
-      );
+      const { access_token: token } = response.data;
+      handlePostResponse(RES_MSG.SUCCESS(signState), token);
     })
     .catch((error) => {
-      handleResponse(RES_MSG.FAIL(signState), error.status);
+      handlePostResponse(RES_MSG.FAIL(signState));
     });
 };

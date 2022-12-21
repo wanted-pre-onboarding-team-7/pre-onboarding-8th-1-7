@@ -5,7 +5,7 @@ import { HOME_TITLE, SIGN_IN, SIGN_UP, TOGGLE_TEXT } from '../utils/auth-fn';
 import { theme } from '../theme';
 import SignForm from '../components/SignForm';
 import { useNavigate } from 'react-router-dom';
-import { checkLocalStorage, USER_KEY } from '../utils/local-storage-fn';
+import { checkLocalStorage, saveUserToken } from '../utils/local-storage-fn';
 
 export default function Home() {
   const [signState, setSignState] = useState(SIGN_UP);
@@ -13,31 +13,26 @@ export default function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigateTodo(checkLocalStorage());
+    redirectTodo(checkLocalStorage());
   }, []);
 
   const handleToggleClick = () => {
     setSignState((prevState) => {
-      if (prevState === SIGN_UP) {
-        return SIGN_IN;
-      }
-      return SIGN_UP;
+      return prevState === SIGN_UP ? SIGN_IN : SIGN_UP;
     });
   };
 
-  const navigateTodo = (condition) => {
+  const redirectTodo = (condition) => {
     if (condition) {
       navigate('/todo');
     }
   };
-  const handleResponse = (messeage, status, token = '') => {
+
+  const handlePostResponse = (messeage, token = '') => {
     setMsg(messeage);
-    if (signState === SIGN_IN && token) {
-      localStorage.setItem(USER_KEY, token);
-      return navigateTodo(status >= 200 && status <= 299);
-    }
-    if (status >= 200 && status <= 299) {
-      return setSignState(SIGN_IN);
+    if (token) {
+      saveUserToken(token);
+      return navigate('/todo');
     }
   };
 
@@ -48,7 +43,10 @@ export default function Home() {
         <ToggleBtn bgColor={theme.btnColor} onClick={handleToggleClick}>
           <ToggleText>{TOGGLE_TEXT[signState]}</ToggleText>
         </ToggleBtn>
-        <SignForm signState={signState} handleResponse={handleResponse} />
+        <SignForm
+          signState={signState}
+          handlePostResponse={handlePostResponse}
+        />
         <Message>{msg}</Message>
       </FormWrapper>
     </Wrapper>

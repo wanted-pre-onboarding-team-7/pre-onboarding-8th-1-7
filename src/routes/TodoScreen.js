@@ -6,10 +6,10 @@ export default function TodoScreen() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigateHome(!checkLocalStorage());
+    redirectHome(!checkLocalStorage());
   }, []);
 
-  const navigateHome = (condition) => {
+  const redirectHome = (condition) => {
     if (condition) {
       navigate('/');
     }

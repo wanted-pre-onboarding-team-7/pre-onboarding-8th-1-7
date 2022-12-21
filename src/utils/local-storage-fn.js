@@ -9,3 +9,6 @@ export const checkLocalStorage = () => {
 export const getUserToken = () => {
   return localStorage.getItem(USER_KEY);
 };
+export const saveUserToken = (token) => {
+  localStorage.setItem(USER_KEY, token);
+};

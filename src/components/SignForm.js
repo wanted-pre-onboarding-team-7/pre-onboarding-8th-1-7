@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { theme } from '../theme';
 import { postAuth, SUBMIT_BTN } from '../utils/auth-fn';
 
-export default function SignForm({ signState, handleResponse }) {
+export default function SignForm({ signState, handlePostResponse }) {
   const [form, setForm] = useState(initialForm);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function SignForm({ signState, handleResponse }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    postAuth(form, signState, handleResponse);
+    postAuth(form, signState, handlePostResponse);
   };
   return (
     <Form onSubmit={handleSubmit}>
