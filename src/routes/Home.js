@@ -4,9 +4,13 @@ import styled from 'styled-components';
 import { HOME_TITLE, SIGN_IN, SIGN_UP, TOGGLE_TEXT } from '../utils/auth-fn';
 import { theme } from '../theme';
 import SignForm from '../components/SignForm';
+import { useNavigate } from 'react-router-dom';
+import { USER_KEY } from '../utils/local-storage-fn';
 
 export default function Home() {
   const [signState, setSignState] = useState(SIGN_UP);
+  const [msg, setMsg] = useState('');
+  const navigate = useNavigate();
 
   const handleToggleClick = () => {
     setSignState((prevState) => {
@@ -17,6 +21,22 @@ export default function Home() {
     });
   };
 
+  const navigateTodo = (condition) => {
+    if (condition) {
+      navigate('/todo');
+    }
+  };
+  const handleResponse = (messeage, status, token = '') => {
+    setMsg(messeage);
+    if (signState === SIGN_IN && token) {
+      localStorage.setItem(USER_KEY, token);
+      return navigateTodo(status >= 200 && status <= 299);
+    }
+    if (status >= 200 && status <= 299) {
+      return setSignState(SIGN_IN);
+    }
+  };
+
   return (
     <Wrapper bgColor={theme.bgColorlight}>
       <Title>{HOME_TITLE[signState]}</Title>
@@ -24,7 +44,8 @@ export default function Home() {
         <ToggleBtn bgColor={theme.btnColor} onClick={handleToggleClick}>
           <ToggleText>{TOGGLE_TEXT[signState]}</ToggleText>
         </ToggleBtn>
-        <SignForm signState={signState} />
+        <SignForm signState={signState} handleResponse={handleResponse} />
+        <Message>{msg}</Message>
       </FormWrapper>
     </Wrapper>
   );
@@ -69,4 +90,8 @@ const ToggleBtn = styled.div`
 const ToggleText = styled.span`
   font-size: 14px;
   color: white;
+`;
+
+const Message = styled.span`
+  margin-top: 10px;
 `;
