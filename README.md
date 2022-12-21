@@ -5,17 +5,27 @@
 ```
 📦src
  ┣ 📂components
- ┃ ┣ 📜GlobalStyleComponent.js // styled-compoenent global style 초기화
+ ┃ ┣ 📂todoScreen
+ ┃ ┃ ┣ 📂todo
+ ┃ ┃ ┃ ┣ 📜Todo.js              // Todo 컴포넌트
+ ┃ ┃ ┃ ┣ 📜TodoBtns.js
+ ┃ ┃ ┃ ┣ 📜TodoContents.js
+ ┃ ┃ ┃ ┣ 📜TodoReviseOff.js
+ ┃ ┃ ┃ ┗ 📜TodoReviseOn.js
+ ┃ ┃ ┣ 📜TodoForm.js            // 새로운 Todo 추가를 관리하는 form
+ ┃ ┃ ┗ 📜TodoList.js
+ ┃ ┣ 📜GlobalStyleComponent.js  // styled-compoenent global style 초기화
  ┃ ┣ 📜SignForm.js
  ┃ ┣ 📜SignToggleBtn.js
  ┃ ┗ 📜TextInput.js
- ┣ 📂routes                    // 라우팅되는 페이지
+ ┣ 📂routes                     // 라우팅되는 페이지
  ┃ ┣ 📜Home.js
  ┃ ┗ 📜TodoScreen.js
  ┣ 📂utils
  ┃ ┣ 📜auth-fn.js              // 로그인 api 관련 로직
  ┃ ┣ 📜constants.js            // 문자열 등 상수 관리
  ┃ ┗ 📜local-storage-fn.js     // local storage 관련 로직
+ ┃ ┗ 📜todo-fn.js
  ┣ 📜App.js                    // 라우팅 관리
  ┣ 📜index.js
  ┗ 📜theme.js
@@ -103,6 +113,31 @@
 
 ![todo_redirection](https://user-images.githubusercontent.com/79842380/206915107-0966aeeb-68b2-47b1-9320-da401960948e.gif)
 [로컬 스토리지에 토큰이 있는 상태로 `/` 페이지에 접속한다면 `/todo` 경로로 리다이렉트]
+
+### Assignment4 투두 리스트 CREATE & READ
+
+#### 구현 기능
+
+- getTodos: `/todo` 경로에서 투두 리스트 목록 확인 ✅
+  - 투두 내용과 완료여부 표시 ✅
+- createTodo: 입력창과 추가 버튼 ✅
+  - 추가 버튼을 클릭하면 새로운 투두 리스트 추가 ✅
+
+#### 구현 코드
+
+### Assignment5 투두 리스트 UPDATE & DELETE
+
+#### 구현 기능
+
+- updateTodo: 개별 아이템 우측에 수정 버튼 > 클릭 시 수정모드 활성화 ✅
+  - 수정모드: 개별 아이템 우측에 제출/취소 버튼 ✅
+- deleteTodo: 개별 아이템 우측에 삭제버튼 > 클릭시 투두 리스트 삭제 ✅
+
+#### 구현 코드
+
+#### Assignment4-5: 투두 리스트 CRUD 데모
+
+![todo_screen](https://user-images.githubusercontent.com/79842380/206914985-e05fd664-85c1-44e7-93e4-ddf49c596b74.gif)
 
 # Team 7 컨벤션
 
