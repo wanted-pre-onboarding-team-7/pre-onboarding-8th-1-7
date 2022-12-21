@@ -3,6 +3,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { HOME_TITLE, SIGN_IN, SIGN_UP, TOGGLE_TEXT } from '../utils/auth-fn';
 import { theme } from '../theme';
+import SignForm from '../components/SignForm';
 
 export default function Home() {
   const [signState, setSignState] = useState(SIGN_UP);
@@ -23,6 +24,7 @@ export default function Home() {
         <ToggleBtn bgColor={theme.btnColor} onClick={handleToggleClick}>
           <ToggleText>{TOGGLE_TEXT[signState]}</ToggleText>
         </ToggleBtn>
+        <SignForm signState={signState} />
       </FormWrapper>
     </Wrapper>
   );
