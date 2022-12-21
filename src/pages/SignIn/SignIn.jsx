@@ -13,7 +13,7 @@ const SignIn = ({ disabled, onSignIn, onMove }) => {
         navigate('/todo', { replace: true });
       }
     } catch (e) {
-      console.log(e);
+      //
     }
   }, [navigate]);
 

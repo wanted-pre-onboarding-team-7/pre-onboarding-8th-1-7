@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { setStorage } from '../../utils/localStorage';
 import { baseAxios } from '../../utils/myAxios';
+import { validation } from '../../utils/validation';
 
 import styles from './Home.module.css';
 import Input from '../../components/Input/Input';
@@ -76,9 +77,10 @@ const Login = () => {
   };
 
   const handleChange = () => {
-    const emailValid = emailRef.current.value.includes('@');
-    const passwordValid = passwordRef.current.value.length >= 8;
-    emailValid && passwordValid ? setIsActive(true) : setIsActive(false);
+    const validated =
+      validation('email', emailRef.current.value) &&
+      validation('password', passwordRef.current.value);
+    validated ? setIsActive(true) : setIsActive(false);
     return;
   };
 
