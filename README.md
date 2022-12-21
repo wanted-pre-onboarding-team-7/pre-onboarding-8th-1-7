@@ -1,97 +1,3 @@
-# 로그인/회원가입 기능 구현(유서경)
-
-## 프로젝트 파일 구조
-
-```
-📦src
- ┣ 📂components
- ┃ ┣ 📜GlobalStyleComponent.js // styled-compoenent global style 초기화
- ┃ ┣ 📜SignForm.js
- ┃ ┣ 📜SignToggleBtn.js
- ┃ ┗ 📜TextInput.js
- ┣ 📂routes                    // 라우팅되는 페이지
- ┃ ┣ 📜Home.js
- ┃ ┗ 📜TodoScreen.js
- ┣ 📂utils
- ┃ ┣ 📜auth-fn.js              // 로그인 api 관련 로직
- ┃ ┣ 📜constants.js            // 문자열 등 상수 관리
- ┃ ┗ 📜local-storage-fn.js     // local storage 관련 로직
- ┣ 📜App.js                    // 라우팅 관리
- ┣ 📜index.js
- ┗ 📜theme.js
-```
-
-## Assignment 별 구현 기능
-
-- `/` : 이메일, 비밀번호, 제출 입력창 ✅
-- 로그인 <=> 회원가입 이동 ✅
-
-### Assignment1 이메일/비밀번호 유효성 검사
-#### 구현 기능
-- 이메일 조건: @ 포함 ✅
-- 비밀번호 조건: 8자 이상 ✅
-- 조건 만족 시에만 버튼 활성화 ✅
-#### 구현 코드
-**SignForm: 로그인/회원가입 데이터 로직을 관리하는 컴포넌트**
-- sumbit event 및 form data 관리
-- `TextInput` 컴포넌트를 분리하여 `SignForm` 내에서 재사용함
-
-![image](https://user-images.githubusercontent.com/79842380/208824042-7ce93fc7-f850-4a1d-81a5-76d009a4b98e.png)
-
-**TextInput: input UI 및 유효성 검증하는 컴포넌트**
-- 유효성 조건을 `input tag`의 `attribute`로 전달: `type`, `minLength`,`required`
-
-![image](https://user-images.githubusercontent.com/79842380/208824530-c6577d09-a0f6-459f-a819-80a1c03c1b07.png)
-
-#### 구현 데모
-![Dec-21-2022 13-46-58](https://user-images.githubusercontent.com/79842380/208823773-663173c2-8e6a-4c23-929f-ff6b9b347836.gif)
-
-
-### Assignment2 로그인 구현
-#### 구현 기능
-- 로그인 API 호출: 올바른 응답 시 `/todo`로 이동 ✅
-- 로그인 성공 시 Response Body의 JWT를 로컬 스토리지에 저장 ✅
-#### 구현 코드
-**postAuth: 로그인/회원가입 API에 요청을 처리하는 함수**
-- `signState`: 사용자의 회원가입/로그인 여부에 대한 상태
-
-![image](https://user-images.githubusercontent.com/79842380/208825382-3ae87015-1213-46ec-bff5-9f7b562ae3ae.png)
-
-**handlePostResponse: 로그인/회원가입 API의 응답을 처리하는 함수**
-- `setMsg`: 응답 결과를 사용자에게 출력
-- `saveUserToken`: 토큰을 로컬 스토리지에 저장
-
-![image](https://user-images.githubusercontent.com/79842380/208825793-e4270b93-e9c7-4834-b48c-fbe654ead798.png)
-
-#### 구현 데모
-![Dec-21-2022 14-13-53](https://user-images.githubusercontent.com/79842380/208826846-22f77278-ddd9-40cf-b413-58d44c7cfb1b.gif)
-
-### Assignment3 로그인 여부 > 리다이렉트 처리
-#### 구현 기능
-- 로컬 스토리지에 토큰이 있는 상태로 `/` 접속 => `/todo` 로 리다이렉트 ✅
-- 로컬 스토리지에 토큰이 없는 상태로 `/todo`접속 => `/` 로 리다이렉트 ✅
-
-#### 구현 코드
-**`/` `/todo`의 스크린 컴포넌트 최초 마운트 시 토큰 저장 여부를 판단하여 리다이렉트**
-
-![image](https://user-images.githubusercontent.com/79842380/208827430-5c9bf77b-a126-4354-ab12-c7b848341943.png)
-
-
-**isLocalStorageHasToken: 로컬 스토리지에 토큰이 있는지 확인하는 함수**
-
-![image](https://user-images.githubusercontent.com/79842380/208827389-d7e8a760-fd42-4962-8111-d8bd3f1bb2c4.png)
-
-#### 구현 데모
-
-![home_redirection](https://user-images.githubusercontent.com/79842380/206915056-0b3525e4-638f-46ac-84ff-117129bd3a47.gif)
-[로컬 스토리지에 토큰이 없는 상태로 `/todo`페이지에 접속한다면 `/` 경로로 리다이렉트]
-
-![todo_redirection](https://user-images.githubusercontent.com/79842380/206915107-0966aeeb-68b2-47b1-9320-da401960948e.gif)
-[로컬 스토리지에 토큰이 있는 상태로 `/` 페이지에 접속한다면 `/todo` 경로로 리다이렉트]
-
-
-# Team 7 컨벤션
-
 ## 커밋 컨벤션
 
 ```
@@ -112,3 +18,60 @@ Test: 테스트 코드 수정에 대한 커밋
 - react-router-dom
 - styled-component
   - 컴포넌트 파일 내에서 하단에 두고 사용
+
+## 작동 방식
+
+- 사용자 output msg: alert
+
+  - axios error msg
+  - email, password validation
+
+- 로그인 <=> 회원가입: state로 관리
+
+## Assignment
+
+### 0: Home 로그인/회원가입 관리
+
+- 로그인 <=> 회원가입: state로 관리 (담당자: 김수진)
+
+  - 선택 이유:
+
+### 1: 이메일과 비밀번호의 유효성 검사기능
+
+- 유효성 체크: html attribute (담당자: 이수창)
+
+  - 참고 코드: 유서경
+  - 선택 이유: HTML의 의미를 살려서(semantic) 사용
+
+- onChange validation 추가 (담당자: 차지환)
+
+  - 참고 코드: SJ0826
+  - 선택 이유: 사용자에게 validation 로직을 UI 상에 보여주어 사용선 증가
+
+### 2: 로그인 API 호출 및 응답 관리
+
+- axios 관련 함수 (담당자: 유서경)
+
+  - 참고 코드: 이수창
+  - 선택 이유: Axios middleware 등을 사용한 라이브러리 활용
+
+- response handle (담당자: 김형욱, 경지윤)
+
+  - 참고 코드: 경지윤, 김형욱
+  - 선택 이유: Status code를 판별하여 분기처리
+
+### 3: 로그인 여부에 따른 리다이렉트 처리
+
+- input hook: useRef (담당자: 경지윤)
+
+  - 참고 코드: 차지환
+  - 선택 이유: 변수값이 변화할 때마다 리렌더링되는 `useState` 대신 `useRef` 사용
+
+- <Navigate /> 컴포넌트 사용 (담당자: 임수진)
+
+  - 참고 코드: 경지윤
+  - 선택 이유: 리다이렉션 등 라우팅 관련 로직을 `Router` 컴포넌트에 위임
+
+### 4: Todo list 목록 구현(Create, Read)
+
+### 5: Todo list 수정 삭제 기능 구현(Update, Delete)
