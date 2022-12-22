@@ -1,6 +1,6 @@
 import { authAxios } from './axios-setting';
 
-export const postLogin = async (userData) => {
+export const postSignin = async (userData) => {
   return authAxios
     .post('/auth/signin', userData)
     .then((response) => {
