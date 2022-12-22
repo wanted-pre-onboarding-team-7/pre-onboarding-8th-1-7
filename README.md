@@ -66,8 +66,19 @@ Test: 테스트 코드 수정에 대한 커밋
       ```
 
     - 2.1.2 요청 인터셉터를 추가하여 `then`, `catch`로 처리되기 전에 작업 수행
-      - 이후 `axios.interceptors.request.eject`로 필요 시 인터셉터 제거 가능
+      - 토큰이 존재하면 config header에 `Authorization` 키 추가
+      - 이후 `axios.interceptors.request.eject`로 필요 시 인터셉터 제거도 가능함
+      ```js
+      preconfigedAxios.interceptors.request.use((config) => {
+        const accessToken = getLocalStorageToken();
+        if (accessToken && config.headers) {
+          config.headers['Authorization'] = `Bearer ${accessToken}`;
+        }
+        return config;
+      });
+      ```
     - 2.1.3 `validateStatus` config 옵션을 사용하면, 오류를 발생시키는 HTTP 코드를 정의 가능
+      - 현재 프로젝트에서는 axios의 기본 상태 코드 처리 방법을 따름
 
 - response handle (담당자: 김형욱, 경지윤)
 
