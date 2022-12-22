@@ -18,8 +18,8 @@ const TodoList = () => {
 
     axios
       .post('/todos', { todo: todoInputRef.current.value })
-      .then(({ data }) => setTodos((prev) => [...prev, data]))
-      .catch(({ response: { data } }) => console.log(data));
+      .then(({ data }) => setTodos((prev) => [...prev, data]));
+    // .catch(({ response: { data } }) => console.log(data));
 
     todoInputRef.current.value = '';
   };
@@ -34,8 +34,8 @@ const TodoList = () => {
               prevTodo.id === id ? { id, todo, isCompleted } : prevTodo,
             ),
           ),
-        )
-        .catch(({ response: { data } }) => console.log(data));
+        );
+      // .catch(({ response: { data } }) => console.log(data));
     },
     [todos],
   );
@@ -44,9 +44,8 @@ const TodoList = () => {
     (id) => {
       setTodos(todos.filter((todo) => todo.id !== id));
 
-      axios
-        .delete(`/todos/${id}`)
-        .catch(({ response: { data } }) => console.log(data));
+      axios.delete(`/todos/${id}`);
+      // .catch(({ response: { data } }) => console.log(data));
     },
     [todos],
   );
@@ -60,12 +59,10 @@ const TodoList = () => {
 
     axios = tokenAxios(token);
 
-    axios
-      .get('/todos')
-      .then((res) => setTodos(res.data))
-      .catch(({ response: { data } }) => {
-        console.log(data);
-      });
+    axios.get('/todos').then((res) => setTodos(res.data));
+    // .catch(({ response: { data } }) => {
+    //   console.log(data);
+    // });
   }, [navigate]);
 
   return (
