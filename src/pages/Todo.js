@@ -12,6 +12,7 @@ function Todo() {
   useEffect(() => {
     refresh();
   }, []);
+
   const refresh = async () => {
     const resp = await getTodos();
     setTodos(resp.data);
@@ -20,7 +21,7 @@ function Todo() {
     <Container>
       <Logout>로그아웃</Logout>
       <Title>Todo List</Title>
-      <TodoForm />
+      <TodoForm refresh={refresh} />
       <TodoList>
         {todos.length ? (
           todos.map((todo) => <TodoItem key={todo.id} todo={todo} />)
