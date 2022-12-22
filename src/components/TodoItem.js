@@ -38,7 +38,7 @@ const TodoItem = ({ text, id, isCompleted }) => {
       <input
         autoFocus
         type="text"
-        value={editedText}
+        value={text}
         onChange={(e) => {
           setEditedText(e.target.value);
         }}
@@ -69,3 +69,4 @@ const TodoItem = ({ text, id, isCompleted }) => {
 };
 
 export default TodoItem;
+
