@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { theme } from '../theme';
-import { postAuth } from '../utils/auth-fn';
-import { SUBMIT_BTN } from '../utils/constants';
+import { SIGN_IN, SUBMIT_BTN, RES_MSG } from '../utils/constants';
 import TextInput from './TextInput';
 
-export default function SignForm({ signState, handlePostResponse }) {
+export default function SignForm({ signState, setSignState }) {
   const [form, setForm] = useState(initialForm);
 
   useEffect(() => {
@@ -19,9 +18,11 @@ export default function SignForm({ signState, handlePostResponse }) {
     });
   };
 
+  //API 구현이 안되어 있어 임시적인 회원가입/로그인 핸들러
   const handleSubmit = (e) => {
     e.preventDefault();
-    postAuth(form, signState, handlePostResponse);
+    window.alert(RES_MSG.SUCCESS(signState));
+    setSignState(SIGN_IN);
   };
 
   return (
@@ -55,6 +56,7 @@ const SubmitBtn = styled.input`
   padding: 12px;
   border-radius: 10px;
   color: white;
+  cursor: pointer;
 `;
 const initialForm = {
   email: '',

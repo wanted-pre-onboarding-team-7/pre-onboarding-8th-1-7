@@ -1,14 +1,15 @@
 export const USER_KEY = 'user';
-export const isLocalStorageHasToken = () => {
-  if (getUserToken()) {
+
+export const checkLocalStorage = () => {
+  if (getLocalStorageToken()) {
     return true;
   }
   return false;
 };
 
-export const getUserToken = () => {
+export const getLocalStorageToken = () => {
   return localStorage.getItem(USER_KEY);
 };
-export const saveUserToken = (token) => {
-  localStorage.setItem(USER_KEY, token);
+export const saveLocalStorageToken = (token) => {
+  return localStorage.setItem(USER_KEY, token);
 };

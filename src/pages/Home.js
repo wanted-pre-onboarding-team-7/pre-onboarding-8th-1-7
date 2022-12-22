@@ -1,54 +1,24 @@
-// Home
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
+
 import { theme } from '../theme';
-import SignForm from '../components/SignForm';
-import { useNavigate } from 'react-router-dom';
-import {
-  isLocalStorageHasToken,
-  saveUserToken,
-} from '../utils/local-storage-fn';
 import SignToggleBtn from '../components/SignToggleBtn';
+import SignForm from '../components/SignForm';
 import { HOME_TITLE, SIGN_UP } from '../utils/constants';
 
-export default function Home() {
+function Home() {
   const [signState, setSignState] = useState(SIGN_UP);
-  const [msg, setMsg] = useState('');
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    redirectTodo(isLocalStorageHasToken());
-  }, []);
-
-  const redirectTodo = (condition) => {
-    if (condition) {
-      navigate('/todo');
-    }
-  };
-
-  const handlePostResponse = (messeage, token = '') => {
-    setMsg(messeage);
-    if (token) {
-      saveUserToken(token);
-      return navigate('/todo');
-    }
-  };
 
   return (
     <Wrapper bgColor={theme.bgColorlight}>
       <Title>{HOME_TITLE[signState]}</Title>
       <FormWrapper>
+        <SignForm signState={signState} setSignState={setSignState} />
         <SignToggleBtn signState={signState} setSignState={setSignState} />
-        <SignForm
-          signState={signState}
-          handlePostResponse={handlePostResponse}
-        />
-        <Message>{msg}</Message>
       </FormWrapper>
     </Wrapper>
   );
 }
-
 const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
@@ -76,6 +46,4 @@ const Title = styled.h1`
   margin-bottom: 10px;
 `;
 
-const Message = styled.span`
-  margin-top: 10px;
-`;
+export default Home;
