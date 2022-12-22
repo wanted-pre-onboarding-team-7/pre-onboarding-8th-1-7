@@ -20,6 +20,21 @@ authAxios.interceptors.request.use((config) => {
   return config;
 });
 
-authAxios.interceptors.response.use(() => {
-  // TODO: Assignment 2.2 response handle 작성
-});
+authAxios.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  async function (error) {
+    const { response: errorResponse } = error;
+    const errorResp = error.response.data.message;
+    // 인증 에러 발생시
+    if (errorResponse.status === 401 && errorResp === 'Unauthorized') {
+      alert('아이디와 비밀번호를 확인해주세요.');
+      window.location.href = '/';
+    } else {
+      alert(errorResp);
+    }
+
+    return Promise.reject(error);
+  },
+);
