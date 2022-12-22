@@ -11,3 +11,9 @@ export const Signup = async (values) => {
 
   return response;
 };
+
+export const getTodos = async () => {
+  const response = await axios.get('/todos');
+
+  return response;
+};
