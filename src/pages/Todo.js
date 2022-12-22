@@ -25,7 +25,7 @@ function Todo() {
         {todos.length ? (
           todos.map((todo) => <TodoItem key={todo.id} todo={todo} />)
         ) : (
-          <EmptyBox>할일을 추가해주세요!</EmptyBox>
+          <div>할일을 추가해주세요!</div>
         )}
       </TodoList>
     </Container>
@@ -40,17 +40,13 @@ const Title = styled.h1`
   font-weight: 600;
   text-align: center;
 `;
+
 const Logout = styled.p`
   font-size: 13px;
   text-align: end;
   color: ${(props) => props.theme.accentColor};
   text-decoration: underline;
   cursor: pointer;
-`;
-const EmptyBox = styled.p`
-  color: rgba(0, 0, 0, 0.5);
-  text-align: center;
-  margin-top: 40px;
 `;
 
 export default Todo;
