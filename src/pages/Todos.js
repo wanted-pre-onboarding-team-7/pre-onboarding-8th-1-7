@@ -5,19 +5,16 @@ import { theme } from '../theme';
 export default function TodoScreen() {
   const [todos, setTodos] = useState([]);
 
-  useEffect(() => {}, []);
-
   return (
     <Wrapper bgColor={theme.bgColorlight}>
       <Title>Todo list</Title>
       <TodoWrapper>
-        {/* D. TodoForm 구현 */}
+        {/* TODO: D. TodoForm 컴포넌트 구현 */}
         {todos.length === 0 ? (
           <span>투두 리스트가 없습니다.</span>
         ) : (
-          <span></span>
+          <span>TODO: B. TodoList 구현</span>
         )}
-        {/* */}
       </TodoWrapper>
     </Wrapper>
   );

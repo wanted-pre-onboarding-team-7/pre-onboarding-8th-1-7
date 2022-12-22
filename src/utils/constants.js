@@ -1,5 +1,3 @@
-import { theme } from '../theme';
-
 export const INPUT = {
   PLACEHOLDER: {
     email: '이메일 주소를 입력하세요.',
@@ -34,9 +32,4 @@ export const SUBMIT_BTN = {
 export const TOGGLE_TEXT = {
   SIGN_UP: '로그인으로 이동하기',
   SIGN_IN: '회원 가입으로 이동하기',
-};
-
-export const CHECKBOX_COLOR = {
-  [true]: theme.btnColor,
-  [false]: 'white',
 };
