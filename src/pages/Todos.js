@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../theme';
 
-export default function TodoScreen() {
+export default function Todos() {
   const [todos, setTodos] = useState([]);
 
   return (
@@ -26,7 +26,6 @@ const Wrapper = styled.div`
   background-color: ${(props) => props.bgColor};
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
 `;
 const TodoWrapper = styled.div`
