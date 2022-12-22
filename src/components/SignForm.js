@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { theme } from '../theme';
 import { SIGN_IN, SUBMIT_BTN, RES_MSG } from '../utils/constants';
@@ -6,22 +6,26 @@ import TextInput from './TextInput';
 
 export default function SignForm({ signState, setSignState }) {
   const [form, setForm] = useState(initialForm);
+  const emailRef = useRef(initialForm.email);
+  const passwordRef = useRef(initialForm.password);
 
+  //수창님 부분 코드 : 로그인/회원가입 상태가 변경될때마다 input reset 시키려고..?
   useEffect(() => {
     setForm(initialForm);
   }, [signState]);
 
-  const handleChange = (e) => {
-    setForm((prev) => {
-      const newForm = { ...prev, [e.target.id]: e.target.value };
-      return newForm;
-    });
+  // 지환님 부분 코드
+  const handleChange = () => {
+    // const isValidated =
+    //   validation('email', emailRef.current.value) &&
+    //   validation('password', passwordRef.current.value);
+    // isValidated ? setIsActive(true) : setIsActive(false);
+    // return;
   };
 
   //API 구현이 안되어 있어 임시적인 회원가입/로그인 핸들러
   const handleSubmit = (e) => {
     e.preventDefault();
-    window.alert(RES_MSG.SUCCESS(signState));
     setSignState(SIGN_IN);
   };
 
