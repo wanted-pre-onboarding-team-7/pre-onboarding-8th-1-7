@@ -25,3 +25,12 @@ export const postTodo = async (todoText) => {
 
   return response;
 };
+
+export const updateTodo = async (id, todo, isCompleted) => {
+  const response = await axios.put(`/todos/${id}`, {
+    todo,
+    isCompleted,
+  });
+
+  return response;
+};

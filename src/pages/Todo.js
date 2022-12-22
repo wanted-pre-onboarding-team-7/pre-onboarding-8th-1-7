@@ -24,7 +24,9 @@ function Todo() {
       <TodoForm refresh={refresh} />
       <TodoList>
         {todos.length ? (
-          todos.map((todo) => <TodoItem key={todo.id} todo={todo} />)
+          todos.map((todo) => (
+            <TodoItem key={todo.id} todo={todo} refresh={refresh} />
+          ))
         ) : (
           <div>할일을 추가해주세요!</div>
         )}
