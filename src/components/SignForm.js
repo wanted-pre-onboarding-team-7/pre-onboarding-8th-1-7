@@ -12,7 +12,7 @@ export default function SignForm({ signState, setSignState }) {
   const emailRef = useRef(initialForm.email);
   const passwordRef = useRef(initialForm.password);
   const navigate = useNavigate();
-  //수창님 부분 코드 : 로그인/회원가입 상태가 변경될때마다 input reset 시키려고..?
+
   useEffect(() => {
     clearInput();
   }, [signState]);
