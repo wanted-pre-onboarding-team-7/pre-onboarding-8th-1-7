@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+## 커밋 컨벤션
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```
+Feat: 새로운 기능에 대한 커밋
+Fix: build 빌드 관련 파일 수정에 대한 커밋
+Build: 빌드 관련 파일 수정에 대한 커밋
+Chore: 그 외 자잘한 수정에 대한 커밋, 패키지 설정
+Ci: CI 관련 설정 수정에 대한 커밋
+Docs: 문서 수정에 대한 커밋
+Style: 코드 스타일 혹은 포맷 등에 관한 커밋
+Refactor: 코드 리팩토링에 대한 커밋
+Test: 테스트 코드 수정에 대한 커밋
+```
 
-## Available Scripts
+## 라이브러리
 
-In the project directory, you can run:
+- axios
+- react-router-dom
+- styled-component
+  - 컴포넌트 파일 내에서 하단에 두고 사용
 
-### `npm start`
+## 작동 방식
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 사용자 output msg: alert
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  - axios error msg
+  - email, password validation
 
-### `npm test`
+- 로그인 <=> 회원가입: state로 관리
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Assignment
 
-### `npm run build`
+### 0: Home 로그인/회원가입 관리
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 로그인 <=> 회원가입: state로 관리 (담당자: 김수진)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  - 선택 이유:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 1: 이메일과 비밀번호의 유효성 검사기능
 
-### `npm run eject`
+- 유효성 체크: html attribute (담당자: 이수창)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  - 참고 코드: 유서경
+  - 선택 이유: HTML의 의미를 살려서(semantic) 사용
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- onChange validation 추가 (담당자: 차지환)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  - 참고 코드: SJ0826
+  - 선택 이유: 사용자에게 validation 로직을 UI 상에 보여주어 사용선 증가
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 2: 로그인 API 호출 및 응답 관리
 
-## Learn More
+- axios 관련 함수 (담당자: 유서경)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  - 참고 코드: 이수창
+  - 선택 이유: Axios middleware 등을 사용한 라이브러리 활용
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- response handle (담당자: 김형욱, 경지윤)
 
-### Code Splitting
+  - 참고 코드: 경지윤, 김형욱
+  - 선택 이유: Status code를 판별하여 분기처리
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 3: 로그인 여부에 따른 리다이렉트 처리
 
-### Analyzing the Bundle Size
+- input hook: useRef (담당자: 경지윤)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+  - 참고 코드: 차지환
+  - 선택 이유: 변수값이 변화할 때마다 리렌더링되는 `useState` 대신 `useRef` 사용
 
-### Making a Progressive Web App
+- <Navigate /> 컴포넌트 사용 (담당자: 임수진)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  - 참고 코드: 경지윤
+  - 선택 이유: 리다이렉션 등 라우팅 관련 로직을 `Router` 컴포넌트에 위임
 
-### Advanced Configuration
+### 4: Todo list 목록 구현(Create, Read)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 5: Todo list 수정 삭제 기능 구현(Update, Delete)

@@ -1,17 +1,12 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { LoginAndRegister, Todos, NotFound } from './pages';
+import { BrowserRouter } from 'react-router-dom';
+import Router from './routes/Router';
 
-const App = () => {
+function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LoginAndRegister />} />
-        <Route path="/todos" element={<Todos />} />
-        <Route path="*" element={<NotFound />}></Route>
-      </Routes>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <Router />
     </BrowserRouter>
   );
-};
+}
 
 export default App;
