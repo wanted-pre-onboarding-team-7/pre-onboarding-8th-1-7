@@ -38,3 +38,28 @@ authAxios.interceptors.response.use(
     return Promise.reject(error);
   },
 );
+
+export const todosAxios = axios.create({
+  baseURL,
+  headers,
+});
+
+todosAxios.interceptors.request.use((config) => {
+  const accessToken = getLocalStorageToken();
+  if (accessToken && config.headers) {
+    config.headers['Authorization'] = `Bearer ${accessToken}`;
+  }
+  return config;
+});
+
+todosAxios.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  async function (error) {
+    const errorResp = error.response.data.message;
+    //TODO:  authAxios와 SYNC 맞추기
+    alert(errorResp);
+    return Promise.reject(error);
+  },
+);
