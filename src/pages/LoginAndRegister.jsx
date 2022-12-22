@@ -39,8 +39,8 @@ const LoginAndRegister = () => {
     }
   };
 
-  const isEmailValid = email => email.includes('@');
-  const isPasswordValid = password => password.length >= 8;
+  const isEmailValid = (email) => email.includes('@');
+  const isPasswordValid = (password) => password.length >= 8;
 
   const clickSubmit = async () => {
     // login시
@@ -65,15 +65,26 @@ const LoginAndRegister = () => {
 
   return (
     <div>
-      <LoginBtn isLoginBtnClick={isLoginBtnClick} disabled={isLoginBtnClick} onClick={clickBtn}>
+      <LoginBtn
+        isLoginBtnClick={isLoginBtnClick}
+        disabled={isLoginBtnClick}
+        onClick={clickBtn}
+      >
         로그인
       </LoginBtn>
-      <RegisterBtn isLoginBtnClick={isLoginBtnClick} disabled={!isLoginBtnClick} onClick={clickBtn}>
+      <RegisterBtn
+        isLoginBtnClick={isLoginBtnClick}
+        disabled={!isLoginBtnClick}
+        onClick={clickBtn}
+      >
         회원가입
       </RegisterBtn>
       <input type="email" onChange={changeInputValue}></input>
       <input type="password" onChange={changeInputValue}></input>
-      <button onClick={clickSubmit} disabled={!(isValidSubmit.email && isValidSubmit.password)}>
+      <button
+        onClick={clickSubmit}
+        disabled={!(isValidSubmit.email && isValidSubmit.password)}
+      >
         제출
       </button>
     </div>
