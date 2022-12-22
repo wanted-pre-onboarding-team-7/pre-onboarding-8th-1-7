@@ -29,6 +29,8 @@
 
 ## :heavy_check_mark: 과제 요구사항에 따른 Best Practice
 
+꼭 Best Practice로 선정되지 않아도 스스로 공부해보고 싶은 부분을 담당해 코드를 구현했습니다.
+
 ### [Assignment1] 이메일과 비밀번호 유효성 검사
 
 #### 📝 유효성 체크 (Best Practice By <span style="background-color: #BFCFFF">SeokyoungYou</span> )
