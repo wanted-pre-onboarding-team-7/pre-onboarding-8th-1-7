@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
 import { BASE_URL } from '../constants/constants';
+import TodoList from '../components/todo/TodoList';
 
 function Todo() {
   const token = localStorage.getItem('token');
@@ -40,6 +41,7 @@ function Todo() {
           <button type="button" onClick={handleCreate}>
             추가
           </button>
+          <TodoList />
         </section>
       </main>
     </>
