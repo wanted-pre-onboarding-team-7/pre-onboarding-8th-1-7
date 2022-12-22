@@ -28,10 +28,7 @@ authAxios.interceptors.response.use(
     const { response: errorResponse } = error;
     const errorResp = error.response.data.message;
     // 인증 에러 발생시
-    if (
-      errorResponse.status === 401 &&
-      error.response.data.message === 'Unauthorized'
-    ) {
+    if (errorResponse.status === 401 && errorResp === 'Unauthorized') {
       alert('아이디와 비밀번호를 확인해주세요.');
       window.location.href = '/';
     } else {
