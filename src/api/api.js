@@ -17,3 +17,11 @@ export const getTodos = async () => {
 
   return response;
 };
+
+export const postTodo = async (todoText) => {
+  const response = await axios.post('/todos', {
+    todo: todoText,
+  });
+
+  return response;
+};
