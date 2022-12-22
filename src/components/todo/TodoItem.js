@@ -1,39 +1,45 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { updateTodo } from '../../api/api';
+import { deleteTodo, updateTodo } from '../../api/api';
 
 function TodoItem({ todo, refresh }) {
   const [isEdit, setIsEdit] = useState(false);
   const [editTodo, setEditTodo] = useState(todo.todo);
   const [isChecked, setIsChecked] = useState(todo.isCompleted);
+
   useEffect(() => {
     updateApi();
   }, [isChecked]);
+
   const updateApi = async () => {
     await updateTodo(todo.id, editTodo, isChecked);
   };
-
-  const submitEditTodo = async () => {
-    setIsEdit((prev) => !prev);
-    if (window.confirm('정말 수정하시겠습니까?')) {
-      updateApi();
-    }
-  };
-
   const editHandler = () => {
     setIsEdit((prev) => !prev);
     setEditTodo(todo.todo);
   };
-  // 투두 값 변경
   const changeHandler = (evt) => {
     const {
       target: { value },
     } = evt;
     setEditTodo(value);
   };
-  // 완려여부 변경하기
+  const submitEdidTodo = () => {
+    setIsEdit((prev) => !prev);
+    if (window.confirm('정말 수정하시겠습니까?')) {
+      updateApi();
+    }
+  };
+
   const completeHandler = async () => {
     setIsChecked((prev) => !prev);
+  };
+  const delHandler = async (id) => {
+    const isDel = window.confirm('정말 삭제하시겠습니까?');
+    if (isDel) {
+      await deleteTodo(id);
+      refresh();
+    }
   };
 
   return (
@@ -48,7 +54,7 @@ function TodoItem({ todo, refresh }) {
               isEdit={true}
               onChange={changeHandler}
             />
-            <EditBtn isEdit={true} onClick={submitEditTodo}>
+            <EditBtn isEdit={true} onClick={submitEdidTodo}>
               확인
             </EditBtn>
             <DelBtn isEdit={true} onClick={editHandler}>
@@ -66,7 +72,13 @@ function TodoItem({ todo, refresh }) {
               {isChecked ? <s>{editTodo}</s> : editTodo}
             </TodoBox>
             <EditBtn onClick={editHandler}>수정</EditBtn>
-            <DelBtn>삭제</DelBtn>
+            <DelBtn
+              onClick={() => {
+                delHandler(todo.id);
+              }}
+            >
+              삭제
+            </DelBtn>
           </>
         )}
       </TodoGroup>
