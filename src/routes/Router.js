@@ -6,7 +6,7 @@ function Router() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/todos" element={<Todos />} />
+      <Route path="/todo" element={<Todos />} />
       {/* <Route path="*" element={<NotFound />} /> */}
       {/* TODO: Error boundary 확인  */}
     </Routes>
