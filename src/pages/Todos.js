@@ -1,11 +1,11 @@
 import TodoList from '../components/TodoList';
 
-function Todos() {
+const Todos = () => {
   return (
     <>
       <TodoList />;
     </>
   );
-}
+};
 
 export default Todos;
