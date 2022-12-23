@@ -16,7 +16,7 @@ function Router() {
         }
       />
       <Route
-        path="/todos"
+        path="/todo"
         element={
           <PrivateRoute>
             <Todos />

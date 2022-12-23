@@ -6,6 +6,7 @@ import TextInput from './TextInput';
 import { postSignin, postSignup } from '../utils/axios-api-fn';
 import { useNavigate } from 'react-router-dom';
 import { validation } from '../utils/validation';
+import { saveLocalStorageToken } from '../utils/local-storage-fn';
 
 export default function SignForm({ signState, setSignState }) {
   // useState 부분은 지환님 코드 합치면 삭제
@@ -40,18 +41,19 @@ export default function SignForm({ signState, setSignState }) {
   };
 
   //API 구현이 안되어 있어 임시적인 회원가입/로그인 핸들러
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
       email: emailRef.current.value,
       password: passwordRef.current.value,
     };
     if (signState === SIGN_IN) {
-      postSignin(formData);
+      const token = await postSignin(formData);
+      saveLocalStorageToken(token);
       navigate('/todo');
     }
     if (signState === SIGN_UP) {
-      postSignup(formData);
+      await postSignup(formData);
       setSignState(SIGN_IN);
     }
   };
