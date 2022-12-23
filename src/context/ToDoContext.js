@@ -10,7 +10,6 @@ const todoReducer = (state, action) => {
         return [...action.initTodos];
       case "ADD":
         return [...state, action.todo];
-  
       case "DELETE":
         return state.filter((task) => task.id !== action.id);
       case "EDIT":
