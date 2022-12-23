@@ -3,7 +3,7 @@ import Router from './routes/Router';
 
 function App() {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <BrowserRouter>
       <Router />
     </BrowserRouter>
   );
