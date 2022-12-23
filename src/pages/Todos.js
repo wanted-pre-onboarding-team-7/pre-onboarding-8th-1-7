@@ -1,26 +1,24 @@
-import { useState } from 'react';
-import TodoList from '../components/TodoList';
+
 import styled from 'styled-components';
+import TodoForm from '../components/TodoForm';
+import TodoList from '../components/TodoList';
+import TodoContext from '../context/todoContext';
 import { theme } from '../theme';
 
-const Todos = () => {
-  const [todos, setTodos] = useState([]);
+export default function Todos() {
 
   return (
     <Wrapper bgColor={theme.bgColorlight}>
       <Title>Todo list</Title>
       <TodoWrapper>
-        {/* TODO: D. TodoForm 컴포넌트 구현 */}
-        {todos.length === 0 ? (
-          <span>투두 리스트가 없습니다.</span>
-        ) : (
-          <TodoList />
-        )}
+        <TodoContext>
+        <TodoForm/>
+        <TodoList/>
+        </TodoContext>
       </TodoWrapper>
     </Wrapper>
   );
-};
-export default Todos;
+}
 
 const Wrapper = styled.div`
   width: 100vw;
