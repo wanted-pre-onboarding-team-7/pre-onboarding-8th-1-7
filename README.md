@@ -97,6 +97,33 @@ Test: 테스트 코드 수정에 대한 커밋
   - 참고 코드: 경지윤
   - 선택 이유: 리다이렉션 등 라우팅 관련 로직을 `Router` 컴포넌트에 위임
 
-### 4: Todo list 목록 구현(Create, Read)
+### 4-5: Todo list 목록 구현
 
-### 5: Todo list 수정 삭제 기능 구현(Update, Delete)
+- Todo 페이지 구조
+
+  - A.페이지 CSS(담당자: 유서경)
+
+    - 참고 코드: 유서경
+
+  - B.TodoList(담당자: 임수진)
+
+    - 최신 투두 아래에
+
+    - C.TodoItem(담당자: 김수진)
+      - 참고 코드: 임수진
+      - 수정 모드 X: 체크박스 수정
+      - 수정 모드: 텍스트 수정
+        - 여러 컴포넌트 동시에 가능
+
+  - D. TodoForm 컴포넌트: 투두 새로 추가(담당자: 경지윤)
+
+    - useRef 사용하여 만들기
+
+  - E. Todo CRUD(담당자: 이수창, 차지환)
+
+    - 참고 코드: 이수창
+    - contextAPI
+
+  - F.Todo axios(담당자: 김형욱)
+
+    - todoAxios 인스턴스 생성

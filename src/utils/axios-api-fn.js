@@ -1,4 +1,4 @@
-import { authAxios } from './axios-setting';
+import { authAxios, todosAxios } from './axios-setting';
 
 export const postSignin = async (userData) => {
   return authAxios
@@ -20,4 +20,14 @@ export const postSignup = async (userData) => {
     .catch((error) => {
       alert(error.message);
     });
+};
+
+export const requestTodos = async (method, propsData = {}) => {
+  const { userData = {}, id = '' } = propsData;
+  const config = {
+    method: method,
+    url: `/todos/${id}`,
+    data: userData,
+  };
+  return await todosAxios(config).then((res) => res.data);
 };
