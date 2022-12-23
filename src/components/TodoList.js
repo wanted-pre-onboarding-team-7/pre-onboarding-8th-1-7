@@ -10,7 +10,6 @@ const TodoList = () => {
     const initTodo = () => {
         getTodos()
           .then((response) => {
-            console.log(response)
             dispatch({ type: "INIT", initTodos: response });
           })
           .catch((err) => {
@@ -18,7 +17,7 @@ const TodoList = () => {
           });
       };
     initTodo()
-  },[])
+  },[dispatch])
   return (
     <>
       {getTodo ? getTodo.map((todo) => {

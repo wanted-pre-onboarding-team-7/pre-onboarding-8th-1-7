@@ -1,22 +1,22 @@
 import styled from 'styled-components';
-import { useState, useRef, useContext } from 'react';
+import { useState, useRef, useContext} from 'react';
 import {postTodos} from '../utils/axios-api-fn'
 import { dispatchContext } from '../context/todoContext';
 function TodoForm() {
   const [newTodo, setNewTodo] = useState();
   const inputRef = useRef();
-  const dispatch = useContext(dispatchContext)
-  const changeHadler = (evt) => {
+  const dispatch = useContext(dispatchContext);
+  const changeHandler = (evt) => {
     const {
       target: { value },
     } = evt;
     setNewTodo(value);
   };
+
   const sumbitHandler = async (evt) => {
     evt.preventDefault();
     if (newTodo) {
       await postTodos({todo:newTodo}).then((response) => {
-        console.log(response)
         dispatch({ type: "ADD", todo: response });
       })
       .catch((err) => {
@@ -27,18 +27,16 @@ function TodoForm() {
       setNewTodo('');
     }
   };
+
   return (
-    <>
-      {' '}
-      <Form onSubmit={sumbitHandler}>
-        <TodoInput
-          ref={inputRef}
-          placeholder="Add task"
-          onChange={changeHadler}
-        />
-        <AddBtn>add</AddBtn>
-      </Form>
-    </>
+    <Form onSubmit={sumbitHandler}>
+      <TodoInput
+        ref={inputRef}
+        placeholder="Add task"
+        onChange={changeHandler}
+      />
+      <AddBtn>add</AddBtn>
+    </Form>
   );
 }
 
@@ -61,6 +59,7 @@ const AddBtn = styled.button`
   border: none;
   background-color: ${(props) => props.theme.btnColor};
   color: white;
+  cursor: pointer;
 `;
 
 export default TodoForm;
