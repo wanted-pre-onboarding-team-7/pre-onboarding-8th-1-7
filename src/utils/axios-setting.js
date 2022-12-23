@@ -32,7 +32,12 @@ authAxios.interceptors.response.use(
       // 인증 에러 발생시
       if (errorResponse.status === 401 && errorResp === 'Unauthorized') {
         alert('아이디와 비밀번호를 확인해주세요.');
-        window.location.href = '/';
+      }
+      if (
+        errorResponse.status === 400 &&
+        error.response.data.message === '동일한 이메일이 이미 존재합니다.'
+      ) {
+        alert('해당 이메일은 이미 존재합니다!');
       } else {
         alert('올바른 아이디와 비밀번호를 입력해주세요.');
       }
@@ -43,8 +48,6 @@ authAxios.interceptors.response.use(
     } else {
       alert(`${error.message} : 잘못된 요청입니다. 다시 시도해주세요.`);
     }
-
-    return Promise.reject(error);
   },
 );
 
@@ -73,7 +76,6 @@ todosAxios.interceptors.response.use(
       // 인증 에러 발생시
       if (errorResponse.status === 401 && errorResp === 'Unauthorized') {
         alert('로그아웃 되었습니다.다시 로그인 해주세요.');
-        window.location.href = '/';
       } else {
         alert('올바른 값을 입력해주세요.');
       }
@@ -82,32 +84,5 @@ todosAxios.interceptors.response.use(
     } else {
       alert(`${error.message} : 잘못된 요청입니다. 다시 시도해주세요.`);
     }
-
-    return Promise.reject(error);
-  },
-);
-
-export const todosAxios = axios.create({
-  baseURL,
-  headers,
-});
-
-todosAxios.interceptors.request.use((config) => {
-  const accessToken = getLocalStorageToken();
-  if (accessToken && config.headers) {
-    config.headers['Authorization'] = `Bearer ${accessToken}`;
-  }
-  return config;
-});
-
-todosAxios.interceptors.response.use(
-  function (response) {
-    return response;
-  },
-  async function (error) {
-    const errorResp = error.response.data.message;
-    //TODO:  authAxios와 SYNC 맞추기
-    alert(errorResp);
-    return Promise.reject(error);
   },
 );
