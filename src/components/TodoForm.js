@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useState, useRef } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { postTodo } from '../../api/api';
 
 function TodoForm() {
@@ -11,15 +11,19 @@ function TodoForm() {
     } = evt;
     setNewTodo(value);
   };
-  const sumbitHandler = async (evt) => {
-    evt.preventDefault();
-    if (newTodo) {
-      await postTodo(newTodo);
-      inputRef.current.value = '';
-      inputRef.current.focus();
-      setNewTodo('');
-    }
-  };
+  const sumbitHandler = useCallback(
+    async (evt) => {
+      evt.preventDefault();
+      if (newTodo) {
+        await postTodo(newTodo);
+        inputRef.current.value = '';
+        inputRef.current.focus();
+        setNewTodo('');
+      }
+    },
+    [inputRef, newTodo],
+  );
+
   return (
     <Form onSubmit={sumbitHandler}>
       <TodoInput
