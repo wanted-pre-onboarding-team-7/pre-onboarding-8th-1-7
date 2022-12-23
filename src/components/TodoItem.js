@@ -12,7 +12,8 @@ const TodoItem = ({ text, id, isCompleted }) => {
   const dispatch = useContext(dispatchContext);
 
   const clickEditDoneButton = async () => {
-    await putTodos({ id, isCompleted, todo: editedText ? editedText : text })
+    if (editedText === '') return alert('문자를 입력해주세요.');
+    await putTodos({ id, isCompleted, todo: editedText })
       .then((response) => {
         dispatch({ type: 'EDIT', todo: response });
         clickEdit();
@@ -69,7 +70,7 @@ const TodoItem = ({ text, id, isCompleted }) => {
         checked={isCompleted}
         onChange={clickCompleteCheckbox}
       />
-      <TodoText>{text}</TodoText>
+      <TodoText isCompleted={isCompleted}>{text}</TodoText>
       <Btns>
         <Btn type="button" onClick={clickEdit}>
           수정
@@ -112,4 +113,5 @@ const Btn = styled.button`
 const TodoText = styled.span`
   position: absolute;
   left: 45px;
+  text-decoration: ${(props) => (props.isCompleted ? 'line-through' : 'none')};
 `;

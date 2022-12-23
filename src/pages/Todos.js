@@ -8,12 +8,12 @@ export default function Todos() {
   return (
     <Wrapper bgColor={theme.bgColorlight}>
       <Title>Todo list</Title>
-      <TodoWrapper>
-        <ToDoContext>
-          <TodoForm />
+      <ToDoContext>
+        <TodoForm />
+        <TodoWrapper>
           <TodoList />
-        </ToDoContext>
-      </TodoWrapper>
+        </TodoWrapper>
+      </ToDoContext>
     </Wrapper>
   );
 }
@@ -31,6 +31,7 @@ const TodoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: scroll;
 `;
 
 const Title = styled.h1`
