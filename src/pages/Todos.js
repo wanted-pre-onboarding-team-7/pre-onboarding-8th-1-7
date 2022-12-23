@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import TodoList from '../components/TodoList';
 import styled from 'styled-components';
 import { theme } from '../theme';
 
-export default function Todos() {
+const Todos = () => {
   const [todos, setTodos] = useState([]);
 
   return (
@@ -13,12 +14,13 @@ export default function Todos() {
         {todos.length === 0 ? (
           <span>투두 리스트가 없습니다.</span>
         ) : (
-          <span>TODO: B. TodoList 구현</span>
+          <TodoList />
         )}
       </TodoWrapper>
     </Wrapper>
   );
 }
+export default Todos;
 
 const Wrapper = styled.div`
   width: 100vw;
