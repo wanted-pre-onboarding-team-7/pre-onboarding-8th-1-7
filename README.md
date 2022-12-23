@@ -94,7 +94,7 @@
 #### 📝 Form 컴포넌트 (Best Practice By <span style="background-color: #BFCFFF">차지환</span> )
 
 - 담당자: 경지윤
-- 선정 이유: 리다이렉션 등 라우팅 관련 로직을 Router 컴포넌트에 위임
+- 선정 이유: 변수값이 변화할 때마다 리렌더링되는 useState 대신 useRef 사용
 
 ```
 코드 설명
@@ -103,7 +103,7 @@
 #### 📝 컴포넌트 사용 (Best Practice By <span style="background-color: #BFCFFF">경지윤</span> )
 
 - 담당자: 임수진
-- 선정 이유: 변수값이 변화할 때마다 리렌더링되는 `useState` 대신 `useRef` 사용
+- 선정 이유: 리다이렉션 등 라우팅 관련 로직을 Router 컴포넌트에 위임
 
 ```
 코드 설명
