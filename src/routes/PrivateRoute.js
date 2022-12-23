@@ -3,7 +3,7 @@ import { getLocalStorageToken } from '../utils/local-storage-fn';
 
 const PrivateRoute = ({ children }) => {
   const isLogined = getLocalStorageToken();
-  return isLogined !== null ? children : <Navigate to="/" />;
+return isLogined ? children : <Navigate to="/" />;
 };
 
 export default PrivateRoute;
