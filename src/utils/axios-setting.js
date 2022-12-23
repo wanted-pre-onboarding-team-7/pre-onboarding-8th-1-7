@@ -32,8 +32,7 @@ authAxios.interceptors.response.use(
       // 인증 에러 발생시
       if (errorResponse.status === 401 && errorResp === 'Unauthorized') {
         alert('아이디와 비밀번호를 확인해주세요.');
-      }
-      if (
+      } else if (
         errorResponse.status === 400 &&
         error.response.data.message === '동일한 이메일이 이미 존재합니다.'
       ) {
@@ -46,7 +45,7 @@ authAxios.interceptors.response.use(
         '로그인/회원가입 요청이 거절되었습니다. 네트워크를 확인하거나 다시 시도해주세요',
       );
     } else {
-      alert(`${error.message} : 잘못된 요청입니다. 다시 시도해주세요.`);
+      alert('test!~');
     }
   },
 );
@@ -82,7 +81,7 @@ todosAxios.interceptors.response.use(
     } else if (errorResquest) {
       alert('잘못된 요청입니다. 네트워크를 확인하거나 다시 시도해주세요');
     } else {
-      alert(`${error.message} : 잘못된 요청입니다. 다시 시도해주세요.`);
+      alert('test!~');
     }
   },
 );
