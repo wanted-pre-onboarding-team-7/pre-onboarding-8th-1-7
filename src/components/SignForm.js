@@ -5,9 +5,11 @@ import { SIGN_IN, SUBMIT_BTN, SIGN_UP } from '../utils/constants';
 import TextInput from './TextInput';
 import { postSignin, postSignup } from '../utils/axios-api-fn';
 import { useNavigate } from 'react-router-dom';
+import { validation } from '../utils/validation';
 
 export default function SignForm({ signState, setSignState }) {
   // useState 부분은 지환님 코드 합치면 삭제
+  const [isActive, setIsActive] = useState(false);
   const [form, setForm] = useState(initialForm);
   const emailRef = useRef(initialForm.email);
   const passwordRef = useRef(initialForm.password);
@@ -30,11 +32,11 @@ export default function SignForm({ signState, setSignState }) {
       return newForm;
     });
     // 유효성 검사
-    // const isValidated =
-    //   validation('email', emailRef.current.value) &&
-    //   validation('password', passwordRef.current.value);
-    // isValidated ? setIsActive(true) : setIsActive(false);
-    // return;
+    const isValidated =
+      validation('email', emailRef.current.value) &&
+      validation('password', passwordRef.current.value);
+    isValidated ? setIsActive(true) : setIsActive(false);
+    return;
   };
 
   //API 구현이 안되어 있어 임시적인 회원가입/로그인 핸들러
@@ -72,6 +74,7 @@ export default function SignForm({ signState, setSignState }) {
         type="submit"
         bgColor={theme.btnColor}
         value={SUBMIT_BTN[signState]}
+        disabled={!isActive}
       />
     </Form>
   );
@@ -92,7 +95,12 @@ const SubmitBtn = styled.input`
   border-radius: 10px;
   color: white;
   cursor: pointer;
+
+  &:disabled {
+    opacity: 0.4;
+  }
 `;
+
 const initialForm = {
   email: '',
   password: '',
