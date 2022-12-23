@@ -11,8 +11,7 @@ const TodoItem = ({ text, id, isCompleted }) => {
 
   const clickEditDoneButton = async () => {
     try {
-      if (isCompleteByCheckBox === true)
-        setIsCompleteByCheckBox(!isCompleteByCheckBox);
+      if (isCompleteByCheckBox) setIsCompleteByCheckBox(!isCompleteByCheckBox);
       const propsData = {
         id,
         userData: { todo: editedText, isCompleted: isCompleted },
@@ -69,4 +68,3 @@ const TodoItem = ({ text, id, isCompleted }) => {
 };
 
 export default TodoItem;
-
