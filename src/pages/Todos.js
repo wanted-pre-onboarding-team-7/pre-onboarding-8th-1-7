@@ -19,7 +19,7 @@ const Todos = () => {
       </TodoWrapper>
     </Wrapper>
   );
-}
+};
 export default Todos;
 
 const Wrapper = styled.div`
