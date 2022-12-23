@@ -1,20 +1,18 @@
-
 import styled from 'styled-components';
 import TodoForm from '../components/TodoForm';
 import TodoList from '../components/TodoList';
-import TodoContext from '../context/todoContext';
+import ToDoContext from '../context/ToDoContext';
 import { theme } from '../theme';
 
 export default function Todos() {
-
   return (
     <Wrapper bgColor={theme.bgColorlight}>
       <Title>Todo list</Title>
       <TodoWrapper>
-        <TodoContext>
-        <TodoForm/>
-        <TodoList/>
-        </TodoContext>
+        <ToDoContext>
+          <TodoForm />
+          <TodoList />
+        </ToDoContext>
       </TodoWrapper>
     </Wrapper>
   );

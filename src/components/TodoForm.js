@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { useState, useRef, useContext} from 'react';
-import {postTodos} from '../utils/axios-api-fn'
-import { dispatchContext } from '../context/todoContext';
+import { useState, useRef, useContext } from 'react';
+import { postTodos } from '../utils/axios-api-fn';
+import { dispatchContext } from '../context/ToDoContext';
 function TodoForm() {
   const [newTodo, setNewTodo] = useState();
   const inputRef = useRef();
@@ -16,12 +16,13 @@ function TodoForm() {
   const sumbitHandler = async (evt) => {
     evt.preventDefault();
     if (newTodo) {
-      await postTodos({todo:newTodo}).then((response) => {
-        dispatch({ type: "ADD", todo: response });
-      })
-      .catch((err) => {
-        throw new Error(err);
-      });
+      await postTodos({ todo: newTodo })
+        .then((response) => {
+          dispatch({ type: 'ADD', todo: response });
+        })
+        .catch((err) => {
+          throw new Error(err);
+        });
       inputRef.current.value = '';
       inputRef.current.focus();
       setNewTodo('');
@@ -43,7 +44,7 @@ function TodoForm() {
 const Form = styled.form`
   width: 100%;
   padding: 20px 0;
-  display:flex;
+  display: flex;
   justify-content: center;
 `;
 const TodoInput = styled.input`
