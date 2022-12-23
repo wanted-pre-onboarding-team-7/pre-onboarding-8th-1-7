@@ -1,6 +1,6 @@
-import { useState,useContext } from 'react';
-import { deleteTodos,putTodos } from '../utils/axios-api-fn';
-import { dispatchContext } from '../context/todoContext';
+import { useState, useContext } from 'react';
+import { deleteTodos, putTodos } from '../utils/axios-api-fn';
+import { dispatchContext } from '../context/ToDoContext.js';
 const TodoItem = ({ text, id, isCompleted }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [editedText, setEditedText] = useState('');
@@ -11,36 +11,36 @@ const TodoItem = ({ text, id, isCompleted }) => {
   const dispatch = useContext(dispatchContext);
 
   const clickEditDoneButton = async () => {
-      await putTodos({id,isCompleted,todo:editedText ? editedText : text})
+    await putTodos({ id, isCompleted, todo: editedText ? editedText : text })
       .then((response) => {
-        dispatch({type: "EDIT", todo: response});
+        dispatch({ type: 'EDIT', todo: response });
         clickEdit();
       })
-      .catch((error)=>{
+      .catch((error) => {
         alert('요청하신 데이터를 처리할 수 없습니다. 관리자에게 문의해주세요.');
-      })
-      setEditedText('');
+      });
+    setEditedText('');
   };
 
   const clickRemoveButton = async () => {
     await deleteTodos(id)
-    .then(() => {
-      dispatch ({type:"DELETE", id});
-    })
-    .catch((error)=>{
-      alert('요청하신 데이터를 처리할 수 없습니다. 관리자에게 문의해주세요.');
-    })
-};
-  
+      .then(() => {
+        dispatch({ type: 'DELETE', id });
+      })
+      .catch((error) => {
+        alert('요청하신 데이터를 처리할 수 없습니다. 관리자에게 문의해주세요.');
+      });
+  };
+
   const clickCompleteCheckbox = async () => {
-      await putTodos({id,isCompleted:!isCompleted,todo:text})
+    await putTodos({ id, isCompleted: !isCompleted, todo: text })
       .then((response) => {
-        dispatch({type: "EDIT", todo: response});
+        dispatch({ type: 'EDIT', todo: response });
       })
-      .catch((error)=>{
+      .catch((error) => {
         throw new Error(error);
-      })
-      setEditedText('');
+      });
+    setEditedText('');
   };
   return isEdit ? (
     <>
