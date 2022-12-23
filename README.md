@@ -48,7 +48,7 @@ npm start
 
 ## :two: 배포 링크
 
-wanted-front-todo-team7.netlify.app
+https://wanted-front-todo-team7.netlify.app
 
 ## :heavy_check_mark: 프로젝트 구조
 
