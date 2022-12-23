@@ -34,40 +34,57 @@
 
 <br/>
 
+## :heavy_check_mark: 프로젝트 살펴 보기
+
+### :one: 실행 방법
+
+```
+git clone https://github.com/wanted-pre-onboarding-team-7/week1-auth-todo.git
+cd week1-auth-todo
+npm install
+npm start
+```
+
+### :two: 데모 영상
+
+### :three: 배포 링크
+
 ## :heavy_check_mark: 프로젝트 구조
 
 ```
+
 📦project
- ┗ 📂src
- ┃ ┣ 📂components
- ┃ ┃ ┣ 📜SignForm.js
- ┃ ┃ ┣ 📜SignToggleBtn.js
- ┃ ┃ ┣ 📜TextInput.js
- ┃ ┃ ┣ 📜TodoForm.js
- ┃ ┃ ┣ 📜TodoItem.js
- ┃ ┃ ┣ 📜TodoList.js
- ┃ ┃ ┗ 📜index.js
- ┃ ┣ 📂context
- ┃ ┃ ┗ 📜ToDoContext.js
- ┃ ┣ 📂pages
- ┃ ┃ ┣ 📜Home.js
- ┃ ┃ ┣ 📜NotFound.js
- ┃ ┃ ┗ 📜Todos.js
- ┃ ┣ 📂routes
- ┃ ┃ ┣ 📜PrivateRoute.js
- ┃ ┃ ┣ 📜PublicRoute.js
- ┃ ┃ ┗ 📜Router.js
- ┃ ┣ 📂styles
- ┃ ┃ ┗ 📜GlobalStylesComp.js
- ┃ ┣ 📂utils
- ┃ ┃ ┣ 📜axios-api-fn.js
- ┃ ┃ ┣ 📜axios-setting.js
- ┃ ┃ ┣ 📜constants.js
- ┃ ┃ ┣ 📜local-storage-fn.js
- ┃ ┃ ┗ 📜validation.js
- ┃ ┣ 📜App.js
- ┃ ┣ 📜index.js
- ┗ ┗ 📜theme.js
+┗ 📂src
+┃ ┣ 📂components
+┃ ┃ ┣ 📜SignForm.js
+┃ ┃ ┣ 📜SignToggleBtn.js
+┃ ┃ ┣ 📜TextInput.js
+┃ ┃ ┣ 📜TodoForm.js
+┃ ┃ ┣ 📜TodoItem.js
+┃ ┃ ┣ 📜TodoList.js
+┃ ┃ ┗ 📜index.js
+┃ ┣ 📂context
+┃ ┃ ┗ 📜ToDoContext.js
+┃ ┣ 📂pages
+┃ ┃ ┣ 📜Home.js
+┃ ┃ ┣ 📜NotFound.js
+┃ ┃ ┗ 📜Todos.js
+┃ ┣ 📂routes
+┃ ┃ ┣ 📜PrivateRoute.js
+┃ ┃ ┣ 📜PublicRoute.js
+┃ ┃ ┗ 📜Router.js
+┃ ┣ 📂styles
+┃ ┃ ┗ 📜GlobalStylesComp.js
+┃ ┣ 📂utils
+┃ ┃ ┣ 📜axios-api-fn.js
+┃ ┃ ┣ 📜axios-setting.js
+┃ ┃ ┣ 📜constants.js
+┃ ┃ ┣ 📜local-storage-fn.js
+┃ ┃ ┗ 📜validation.js
+┃ ┣ 📜App.js
+┃ ┣ 📜index.js
+┗ ┗ 📜theme.js
+
 ```
 
 ## :heavy_check_mark: 과제 요구사항에 따른 Best Practice
