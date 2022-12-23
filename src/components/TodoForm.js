@@ -5,7 +5,7 @@ import { postTodo } from '../../api/api';
 function TodoForm() {
   const [newTodo, setNewTodo] = useState();
   const inputRef = useRef();
-  const changeHadler = (evt) => {
+  const changeHandler = (evt) => {
     const {
       target: { value },
     } = evt;
@@ -21,17 +21,14 @@ function TodoForm() {
     }
   };
   return (
-    <>
-      {' '}
-      <Form onSubmit={sumbitHandler}>
-        <TodoInput
-          ref={inputRef}
-          placeholder="Add task"
-          onChange={changeHadler}
-        />
-        <AddBtn>add</AddBtn>
-      </Form>
-    </>
+    <Form onSubmit={sumbitHandler}>
+      <TodoInput
+        ref={inputRef}
+        placeholder="Add task"
+        onChange={changeHandler}
+      />
+      <AddBtn>add</AddBtn>
+    </Form>
   );
 }
 
