@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home';
 import Todos from '../pages/Todos';
 import PublicRoute from './PublicRoute';
@@ -23,7 +23,7 @@ function Router() {
           </PrivateRoute>
         }
       />
-      {/* <Route path="*" element={<NotFound />} /> */}
+      <Route path="*" element={<Navigate to="/" />} />
       {/* TODO: Error boundary 확인  */}
     </Routes>
   );
